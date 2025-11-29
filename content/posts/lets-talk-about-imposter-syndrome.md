@@ -1,0 +1,83 @@
+---
+title: "Let's Talk about Imposter Syndrome"
+date: '2018-06-18'
+slug: lets-talk-about-imposter-syndrome
+cover_image: https://user-images.githubusercontent.com/17350652/183017525-ee02c374-a4ae-4604-947e-d05970f487f7.png
+description: If you’ve come here because you frequently find yourself feeling like a failure, know that you are NOT alone.
+---
+
+![Imposter Syndrome](https://user-images.githubusercontent.com/17350652/183018687-63b6915e-d01c-4642-8a6b-dcfe59ce9fe0.png)
+
+
+## Before Anything Else - My Ask
+
+I’m about to lay out some extremely deep, personal stuff. My ask is that if this resonates with you, consider putting your thoughts down about it as well. Sharing my post is great, and is always appreciated - but the more voices we can get “out” talking about this stuff the better. We can change the culture that’s been created - but we can only do it with many voices.
+
+## By Far The Hardest Post I’ve Ever Written
+
+If you’ve come here because you frequently find yourself feeling like a failure, know that you are NOT alone. I’ve spoken with dozens of people about these feelings. Most of the time because I was feeling them and trying to find my way out of being lost, confused, and afraid. No one is immune to this feeling. I’ve spoken with Architects, Product Managers, Technical Marketers, Engineers, Field Engineers and Account Executives. I’ve even heard it from VPs. I’ve heard it from VCDX’s. No one is immune.
+
+Out of all of the “things” that define the average professional individual the concept of Imposter Syndrome is something 100% of people I’ve spoken with have been able to relate to. [Wikipedia](https://en.wikipedia.org/wiki/Impostor_syndrome) defines imposter syndrome as “A psychological pattern in which people doubt their accomplishments and have a persistent often internalized fear of being exposed as a fraud”. The definition continues to say “Proof of success is dismissed as luck, timing, or as a result of deceiving others into thinking they are more intelligent and competent than they believe themselves to be.”. The first time I read the actual definition I swore that it was written about me. Carbon copy. I’ve shared it back with dozens of people who have echoed the same feelings.
+
+![Your thoughts when someone says something good](https://user-images.githubusercontent.com/17350652/183017715-91168ea3-a112-4b60-b0cc-791365636fa1.png)
+
+It’s been incredibly hard to write this post, because in a lot of ways it’s forcing me to come face to face with it. It’s not my “secret fear” anymore, it’s something I’m putting out on a permanent record. I’ve come to realize that by not saying anything about this struggle I’ve had literally for years - I was contributing to it being hard for others to share. I want to be clear; I have no “extreme” thoughts as a result of this feeling. It doesn’t take me to dark places. That being said, I have known people that it does. The culture that we are a part of at times has left people in a place where they don’t feel like it’s OK to ask for support. I’m a huge believer in the power of our community (especially the one that we refer to as vCommunity) - and a community should be something that people feel comfortable leaning on during rough times. So here we are!
+
+## Self-Doubt is Scary
+
+I’ve had some great success over the years, objectively. I recently landed my dream job. I’ve got 2 amazing Daughters. I’ve got a wife who loves me and stands by me. All of these things set me up to be the absolute best version of myself that I can be. What if I told you that many days, I feel like it’s all on the brink of falling apart, and I’ll lose it all?
+
+Regarding my career, now is the time I should feel on the top of my game. I just went through an incredibly competitive interview process, and came out on top. I put a lot of work into preparing for the interviews. I had a lot of people speak up for me, which I’m incredibly grateful for. I’m going to be missed in my current role by leaving. Instead of feeling overjoyed, why am I so focused on being afraid of letting people down? What if it wasn’t me that pulled this job off, what if it was just the fact that people spoke up for me? What if I’m not as good as I put forward in the interviews? What if I need more time and I don’t catch on fast enough? In my gut - I feel positive about all of those things, but if I really did…why is there this nagging voice in the back of my head? This shadow thats cast over my excitement. Why do I toss and turn some nights until 3am **because I can’t escape the feeling**?
+
+![Other peoples feelings](https://user-images.githubusercontent.com/17350652/183017885-48a1d59c-83a9-4571-9e3b-2cea53319583.png)
+
+Many people have mentioned to me “Dude, how do you do all the insert nerdy stuff here stuff that you do? Do you ever sleep?”. The truth is, I get fixated on problems - and they define my confidence. I get so overwhelmed with fear of not being able to solve the problem that I force myself to stay up until I can make some measurable progress. If I don’t make that progress, I’ve failed. What if I can’t solve it? What if I have to ask internal resources to help me solve it? What if it’s an easy “Read the manual” thing and I missed it? Worse, what if I’m just not smart enough to understand what I’m reading? What if all of that validates these irrational fears that I’m having about being an imposter. **What if I don’t belong in this career**?
+
+I don’t say all of this to invite a pity party. People will inevitably respond supportively to this post; because I believe most people are good - but I didn’t write this entirely for me. Yes, this is absolutely therapeutic. I’m saying this for the person who’s up at 2am, and can’t sleep because their mind is running circles because of these feelings they don’t yet understand. The person who wakes up in the morning hoping someone will ask the right series of questions to get them to talk about all of this, because it is ripping them apart from the inside and they need a shoulder. I’m talking to the person who’s taking a break right now, and going for a walk because they can’t figure out a problem and their anxiety is through the roof from it. I’m talking to the person who makes a dozen jokes a day, because if they can make people laugh - no one will know how scared they are.
+
+For that person, listen up - The way you are feeling about yourself is NOT always reality. Our brains do crazy things when we’re feeling fear, or feeling anxiety. Sometimes we can be our own worst enemies, and we are ALWAYS our own worst critics. Sometimes problems are just tough to solve. Sometimes life is unforgiving. Things that come easy to others, aren’t always going to be easy to you. Guess what? Thats OK.
+
+We will talk about this a bit more below - but failures are going to happen. Life happens. Sometimes you won’t know the answer. Sometimes you’ll get the answer wrong. Sometimes you’ll fail the test. Sometimes life will remind you how much more you have to grow. Sometimes you didn’t sleep enough. Sometimes you had different expectations and didn’t prepare enough. It’s what you do in rounds 2 through 5 that that matters. I failed my VCP Cloud Management test the first time I took it. In fact, I’ve failed MANY certification tests the first time I take them. It happens. It took me a long time to learn that my lack of ability to take a test well doesn’t mean im a failure - it just means I failed a test. I’m just not a great test taker - nothing more than that. The problem isn’t being a failure, the problem isn’t being afraid. The problem is letting those concepts define you in your heart. We can’t let “Imposter Syndrome” become part of our identities.
+
+## So How Do We Make This Better
+
+This is where things get complicated. As it stands today, it’s going to be tough. I don’t have any of the answers. I just have perspective. Just some thoughts that I’ve had when I’m feeling low. Maybe they won’t work for you. Maybe you need something more. That’s OK! For those of you that fit into this category, maybe you’ll find the courage to write about it and share with others.
+
+The biggest way this gets better is by us as individuals getting to a place where we are comfortable asking for support. I don’t think it’s realistic to pop on Twitter, dump our feelings out into the world, and expect it to be solved for us. These are complex internal emotions, usually built up over years worth of experiences. That being said, we should be working to create an environment where the people that we surround ourselves with are trusted enough to support us when times get tough or when we just need a bit of encouragement to get over the hill. Sometimes the best thing you can have is a mentor, or a friend, who’s willing to just listen and help step you through climbing out of the hole. I don’t mean this to say that you should NEVER deal with problems on your own, or that you always need other people to help you through it (more on that 2 paragraphs from now…). I just mean that you should never feel like you have to do it alone. If you do, you should evaluate the people in your circle and consider introducing some new people into your life. So many of us want this to change - find some of us. We’re out there.
+
+![image](https://user-images.githubusercontent.com/17350652/210042746-43b65046-b026-4bcc-aa96-0a8b3c89e4d3.png)
+
+This brings me to my second, and maybe more important point. We need to be better individual humans with how we respond to others going through complex emotions like this. We’ve cultivated an awesome community here. I’ve seen incredible things come from it. This is not a community failure. This isn’t a failure at all. We need to start inviting conversations about these feelings, listen to the individual struggles, and respond to them. We need to create opportunities in individual conversations with our friends and colleagues for them to open up and be completely honest. As mentors, we need to be better about cultivating these conversations, and drawing them out. We should be asking questions like “Tell me about some stuff that was hard this week”, or “Are you feeling successful at what you’re doing? Tell me about it.” The truth is - we won’t always get an honest response. All we can do is be an open ear, and open the door. If 1 out of 50 times someone walks through it - we’re making a difference.
+
+Finally, and most truthful (which automatically makes it the hardest to hear…) - We need to learn to accept that failures happen every single day, that we absolutely will fail again, and that failure is completely OK. Our brains create this relationship that failing at something is going to lead to the worst outcome possible. More so, that those failures will come to define our level of success. It’s not true.
+
+![image](https://user-images.githubusercontent.com/17350652/210042717-1ea65185-0958-481d-9d55-2abf19c7e3e2.png)
+
+You are going to fail. You are probably going to fail HARD sometimes. We need to start reprogramming the way we approach failure. We need to manage failure, as opposed to letting failure manage us. Failure doesn’t mean you are a fraud. It doesn’t mean you don’t deserve to be here. It doesn’t mean you faked your way to your achievements and now you’re exposed. Not being able to solve a problem, most of the time, just means you can’t figure out a problem. It just means you have a gap to fill. Nothing more. Making a mistake is a mistake. Sometimes you should’ve read the manual closer. Sometimes you need to work on some fundamentals before jumping into the deep end of the pool. The point is, it’s what you do with that failure that defines you - not the fact that you failed at all. We need to drive a culture that encourages people to learn from failure, and grow from it. I can honestly say that I haven’t grown nearly as much from my successes as I have grown from the times I failed.
+
+We need to teach ourselves to put a level of realism around what we do, and our current station in life. Many of us work and live in high pressure environments. VMware is an incredibly high speed company. I’m surrounded by the best and brightest every day. Many of them have been here for 5x and 10x the amount of time I have been. There are times it makes me incredibly insecure. I remember a time where I worked hard to put an application I built in a docker container, and someone I admire submitted a PR on it, completely optimizing it. I was so embarrassed. I didn’t want that individual to think “Wow, I can’t believe Cody even put this on the internet.” I wanted him to think I was smart too!
+
+![image](https://user-images.githubusercontent.com/17350652/210042698-3196f56e-ae88-4f53-be27-e4fb3d87ae44.png)
+
+I had to remind myself that me not having an equivalent level of skill to him/others doesn’t mean that I’ve failed. It means I’m young - not in age, but in experience in a specific area. It’s been so hard to talk myself through this concept. It’s easy to put this down in a blog - but it’s harder to put into practice. We need to address our emotions, our anxieties, our fears as individual instances of a problem - and not an all encompassing existence. We need to solve them individually - and force ourselves to look at them one by one instead of trying to fix our entire being in one shot. We’ll never succeed at fixing all of us at one time - but we can absolutely solve one problem at a time. We can push back that darkness one victory, or failure, at a time.
+
+I took the Docker situation above, and looked in to learning how to achieve the same results. What gaps did I have? What techniques did I not understand? I broke down the dockerfile - studied the sections that confused me - and became proficient in them. I’ve used the concepts I learned from that dozens of times now. One failure has been the reason for a dozen successes, at a minimum.
+
+## Closing Thoughts
+
+Challenge yourself to embrace failure. Challenge yourself to take that failure and turn it into something positive. It’s easy to let things like Imposter Syndrome become part of your identity. There are a few of you that I talk with about this topic often enough that I sometimes feel like it’s part of mine. Fight against that current. Let your response to failure be what defines who you are. Be the person that is known for rallying after defeat. That’s the person I want on my team. The person who tries to build something - fails - and comes back to try again with a dozen new skills because they refused to let that failure define them.
+
+![image](https://user-images.githubusercontent.com/17350652/210042665-bc01700c-1cbc-4fd5-91c8-d20513a5be23.png)
+
+This post is different from anything I’ve posted before. Usually I’m talking about something cool that I want to share, or solving a problem. A lot of times there’s Python involved. Or vRA. Sadly; there’s no “Support as a Blueprint” on the Solutions Exchange. We can’t use PIP to install a module that helps us figure out self-doubt.
+
+Growing is hard. Success is challenging at times. It shouldn’t have to be - but the reality is, that it is. Find ways to let yourself celebrate your successes. Reward yourself. Be proud of yourself FIRST.. Surround yourself with a community that builds you up. The vCommunity is a great example of this - Post your successes. Watch the community celebrate with you - we see it happen all the time! These feelings CAN get better. They won’t ever go away completely - but they can be managed.
+
+Finally - Be a beacon for others. Help other people through struggles like this. The fastest way for that voice of doubt in my head to quiet down, or that shadow to be lifted, is when I can mentor someone through their own problems. It makes me feel less alone in this world. Whether its a technical issue, it could be a personal issue, it could be career advice. It doesn’t matter. Helping people is the fastest way to remind yourself that you are NOT failing. You’re making the people around you better.
+
+![image](https://user-images.githubusercontent.com/17350652/210042610-582df540-05a0-4000-b48f-f6b4dcd78ed4.png)
+
+
+If you can be a person who rallies AFTER a defeat, and furthermore will help carry those around you when they are feeling “tired”, then you are the kind of person I want to be around. I would take that person on my team 10 times out of 10, over the most technically skilled person. As I said earlier, there is a lot of sad stuff out in the world today. Be part of the light that extinguishes the darkness from yourself, and the people around you.
+
+Thanks for taking the time to read this long post. I hope it helps you! Take care!

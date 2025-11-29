@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cody De Arkland</title>
+    <link>https://codyde.io</link>
+    <description>Writing about developer experience, cloud infrastructure, and building with modern web technologies.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Nov 2025 18:55:38 GMT</lastBuildDate>
+    <atom:link href="https://codyde.io/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title><![CDATA[Building MCP-Start: Bringing Model Context Protocol to TanStack Start]]></title>
+      <link>https://codyde.io/posts/building-mcp-start-tanstack</link>
+      <guid>https://codyde.io/posts/building-mcp-start-tanstack</guid>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[I needed MCP servers in TanStack Start, and the existing solutions didn't quite fit. Here's how Claude Code helped me build mcp-start, and the wild ride of WebStandardTransport implementation.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Extending Sentry's JavaScript SDK to support Claude Code (using...Claude Code)]]></title>
+      <link>https://codyde.io/posts/building-sentry-claude-code-integration</link>
+      <guid>https://codyde.io/posts/building-sentry-claude-code-integration</guid>
+      <pubDate>Sat, 29 Nov 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Turns out AI is pretty good at researching existing patterns, and you can extend SDKs pretty reasonably with it. I took Claude Code on a spin to see if I could integrate the Claude Code Agent SDK... and it did pretty ok!]]></description>
+    </item>
+    <item>
+      <title><![CDATA["Write Them a Story" with NextJS and OpenAI]]></title>
+      <link>https://codyde.io/posts/story-nextjs-openai</link>
+      <guid>https://codyde.io/posts/story-nextjs-openai</guid>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[I wanted a way to show my kids the power of OpenAI, and build a bit with NextJS, and so "Write Them a Story" was born.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Anatomy of Awareness - DevRel Edition]]></title>
+      <link>https://codyde.io/posts/anatomy-of-awareness</link>
+      <guid>https://codyde.io/posts/anatomy-of-awareness</guid>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[Awareness and DevRel - what does it actually mean? What are awareness activities, and how can they AUTHENTICALLY feed your organizations revenue engine?]]></description>
+    </item>
+    <item>
+      <title><![CDATA[The Next Age of Developer Relations]]></title>
+      <link>https://codyde.io/posts/next-age-devrel</link>
+      <guid>https://codyde.io/posts/next-age-devrel</guid>
+      <pubDate>Wed, 22 Feb 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[We are square in the middle of what I consider as The Next Age of Developer Relations. How do we respond in DevRel?]]></description>
+    </item>
+    <item>
+      <title><![CDATA[What's in the Box? CodyDe.io Edition]]></title>
+      <link>https://codyde.io/posts/whats-in-the-box</link>
+      <guid>https://codyde.io/posts/whats-in-the-box</guid>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[A very different site setup than I've ran before. Svelte + GitHub as a CMS. Running in Netlify. Read more to learn why, and what's next.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Building Your Corner of the Internet]]></title>
+      <link>https://codyde.io/posts/your-corner-of-the-internet</link>
+      <guid>https://codyde.io/posts/your-corner-of-the-internet</guid>
+      <pubDate>Sat, 14 Jan 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[Your corner of the internet is about giving you a place for your own thoughts. The work you've done, the writing you want to do, or the notes you want to keep.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[KIND and Load Balancing with MetalLB on Mac]]></title>
+      <link>https://codyde.io/posts/kind-and-metallb-on-mac</link>
+      <guid>https://codyde.io/posts/kind-and-metallb-on-mac</guid>
+      <pubDate>Fri, 04 Dec 2020 00:00:00 GMT</pubDate>
+      <description><![CDATA[Kind and MetalLB allow you run Kubernetes clusters within Docker and deploy Load Balancers - but theres a few tricks to get it up and running.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Anatomy of my MacOS Terminal]]></title>
+      <link>https://codyde.io/posts/anatomy-of-my-macos-terminal</link>
+      <guid>https://codyde.io/posts/anatomy-of-my-macos-terminal</guid>
+      <pubDate>Mon, 30 Mar 2020 00:00:00 GMT</pubDate>
+      <description><![CDATA[I spend way too much time in the MacOS terminal. Here's a few tools I've come across to make things a bit easier]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Let's Talk about Imposter Syndrome]]></title>
+      <link>https://codyde.io/posts/lets-talk-about-imposter-syndrome</link>
+      <guid>https://codyde.io/posts/lets-talk-about-imposter-syndrome</guid>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 GMT</pubDate>
+      <description><![CDATA[If you’ve come here because you frequently find yourself feeling like a failure, know that you are NOT alone.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Infrastructure and Management as Code - Intro to vSphere API with Python]]></title>
+      <link>https://codyde.io/posts/vsphere-api-with-python</link>
+      <guid>https://codyde.io/posts/vsphere-api-with-python</guid>
+      <pubDate>Thu, 10 Nov 2016 00:00:00 GMT</pubDate>
+      <description><![CDATA[I've had a few goals for learning this year. One of them has been to crack open the scripting world of Python.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[My VMWorld Session - How PG&E Is Automating Secure Environments Using NSX, vRealize Automation, and vRealize Orchestrator]]></title>
+      <link>https://codyde.io/posts/my-vmworld-session-how-pge-is-automating-secure-environments-using-nsx-vrealize-automation-and-vrealize-orchestrator</link>
+      <guid>https://codyde.io/posts/my-vmworld-session-how-pge-is-automating-secure-environments-using-nsx-vrealize-automation-and-vrealize-orchestrator</guid>
+      <pubDate>Fri, 05 Aug 2016 00:00:00 GMT</pubDate>
+      <description><![CDATA[A huge bucket list item for me has always been to speak at VMWorld. I'm pretty excited for the opportunity to talk about what my team has done!]]></description>
+    </item>
+  </channel>
+</rss>

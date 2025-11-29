@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@import "highlight.js/styles/github-dark.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light mode - Clean whites and dark text */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-accent: #ea580c;
+  --color-accent-hover: #dc2626;
+  --color-border: #e5e7eb;
+  --color-muted: #6b7280;
+}
+
+.dark {
+  /* Dark mode - Slate backgrounds with warm orange accent */
+  --color-background: #0f172a;
+  --color-foreground: #f8fafc;
+  --color-accent: #fb923c;
+  --color-accent-hover: #f97316;
+  --color-border: #1e293b;
+  --color-muted: #94a3b8;
+}
+
+body {
+  @apply m-0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Fira Mono",
+    "Roboto Mono", monospace;
+}
+
+.prose {
+  @apply max-w-none text-gray-800 dark:text-gray-200;
+}
+
+.prose h1 {
+  @apply mb-4 mt-8 text-3xl font-bold text-orange-600 dark:text-orange-500;
+}
+
+.prose h1 a {
+  @apply text-orange-600 no-underline transition-colors hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400;
+}
+
+.prose h2 {
+  @apply mb-3 mt-8 text-2xl font-semibold text-orange-600 dark:text-orange-500;
+}
+
+.prose h2 a {
+  @apply text-orange-600 no-underline transition-colors hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400;
+}
+
+.prose h3 {
+  @apply mb-2 mt-6 text-xl font-semibold text-orange-600 dark:text-orange-500;
+}
+
+.prose h3 a {
+  @apply text-orange-600 no-underline transition-colors hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-orange-600 dark:text-orange-500;
+}
+
+.prose h4 a,
+.prose h5 a,
+.prose h6 a {
+  @apply text-orange-600 no-underline transition-colors hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 ml-6 space-y-2;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply leading-relaxed;
+}
+
+.prose a {
+  @apply font-medium text-orange-600 underline decoration-orange-600/30 underline-offset-2 transition-colors hover:text-orange-700 hover:decoration-orange-700/50 dark:text-orange-500 dark:decoration-orange-500/30 dark:hover:text-orange-400 dark:hover:decoration-orange-400/50;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+.prose code {
+  @apply rounded bg-gray-100 px-1.5 py-0.5 text-sm font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+}
+
+.prose pre {
+  @apply mb-6 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm;
+}
+
+.prose img {
+  @apply my-8 rounded-lg shadow-lg;
+}
+
+.prose blockquote {
+  @apply my-6 border-l-4 border-gray-300 pl-4 italic text-gray-700 dark:border-gray-600 dark:text-gray-300;
+}
+
+.prose hr {
+  @apply my-8 border-gray-200 dark:border-gray-700;
+}
+
+.hljs {
+  @apply !bg-gray-900;
+}
