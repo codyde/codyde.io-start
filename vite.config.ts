@@ -19,9 +19,6 @@ const config = defineConfig({
     // Watch markdown files and regenerate posts.json on changes
     markdownHotReload(),
   ],
-  server: {
-    allowedHosts: ['.trycloudflare.com']
-  },
 })
 
 export default config

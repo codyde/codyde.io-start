@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 export const Route = createFileRoute('/api/og' as any)({
   server: {
     handlers: {
-      GET: async () => {
+      all: async () => {
         return new ImageResponse(
           ({
             type: 'div',
@@ -136,6 +136,6 @@ export const Route = createFileRoute('/api/og' as any)({
           }
         )
       },
-    },
+    } as Record<string, () => Promise<Response>>,
   },
 })

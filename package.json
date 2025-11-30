@@ -1,5 +1,5 @@
 {
-  "name": "markdown-blog-tanstack",
+  "name": "codyde-start",
   "private": true,
   "type": "module",
   "scripts": {
@@ -28,7 +28,7 @@
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.460.0",
-    "mcp-tanstack-start": "^0.3.0",
+    "mcp-tanstack-start": "^0.4.0",
     "nitro": "3.0.1-alpha.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

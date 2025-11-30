@@ -32,7 +32,7 @@ function truncate(text: string, maxLength: number): string {
 export const Route = createFileRoute('/api/og/$slug' as any)({
   server: {
     handlers: {
-      GET: async ({ params }) => {
+      all: async ({ params }) => {
         const { slug } = params
         const post = allPosts.find((p) => p.slug === slug)
 
@@ -192,7 +192,7 @@ export const Route = createFileRoute('/api/og/$slug' as any)({
           }
         )
       },
-    },
+    } as Record<string, (ctx: { params: { slug: string } }) => Promise<Response>>,
   },
 })
 

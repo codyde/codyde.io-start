@@ -135,6 +135,36 @@ code {
   @apply my-8 border-gray-200 dark:border-gray-700;
 }
 
+/* Tables */
+.prose table {
+  @apply my-6 w-full border-collapse overflow-hidden rounded-lg border border-gray-200 text-sm dark:border-gray-700;
+}
+
+.prose thead {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.prose th {
+  @apply border-b border-gray-200 px-4 py-3 text-left font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100;
+}
+
+.prose td {
+  @apply border-b border-gray-200 px-4 py-3 text-gray-700 dark:border-gray-700 dark:text-gray-300;
+}
+
+.prose tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+.prose tbody tr:hover {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+}
+
+.prose td code,
+.prose th code {
+  @apply text-xs;
+}
+
 .hljs {
   @apply !bg-gray-900;
 }

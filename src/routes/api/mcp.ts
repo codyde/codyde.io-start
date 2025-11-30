@@ -32,25 +32,25 @@ search_posts to find specific topics, and get_post to read full articles.`,
 });
 
 /**
- * MCP API Route
+ * MCP API Route (2025-06-18 Spec Compliant)
  *
  * This endpoint handles Model Context Protocol requests.
  * AI assistants and MCP clients can connect to this endpoint
  * to interact with the blog's tools.
  *
  * Endpoints:
- * - POST /api/mcp - JSON-RPC 2.0 requests
+ * - POST /api/mcp - JSON-RPC 2.0 requests (single message per request)
  * - GET /api/mcp - SSE stream for server-to-client notifications
+ * - DELETE /api/mcp - Session termination
  */
 export const Route = createFileRoute("/api/mcp")({
   server: {
     handlers: {
-      GET: async ({ request }) => {
+      // Using lowercase 'all' due to a bug in TanStack Start's handler lookup
+      // See: https://github.com/TanStack/router - the runtime looks for 'all' but types expect 'ALL'
+      all: async ({ request }) => {
         return mcp.handleRequest(request);
       },
-      POST: async ({ request }) => {
-        return mcp.handleRequest(request);
-      },
-    },
+    } as Record<string, (ctx: { request: Request }) => Promise<Response>>,
   },
 });

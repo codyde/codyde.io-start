@@ -1,6 +1,6 @@
 # MCP Implementation Guide for TanStack Start
 
-This document explains how Model Context Protocol (MCP) was implemented in this TanStack Start application using the `mcp-start` package.
+This document explains how Model Context Protocol (MCP) was implemented in this TanStack Start application using the `mcp-tanstack-start` package.
 
 ## Table of Contents
 
@@ -25,13 +25,16 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is a standa
 - **Resources**: Data that AI can read (e.g., files, database records)
 - **Prompts**: Pre-defined prompts that guide AI behavior
 
-### What is mcp-start?
+### What is mcp-tanstack-start?
 
-`mcp-start` is a TanStack Start-native implementation of MCP. It was built from scratch to feel natural in the TanStack ecosystem, using:
+`mcp-tanstack-start` is a TanStack Start-native implementation of MCP, fully compliant with the [2025-06-18 Streamable HTTP specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports). It was built from scratch to feel natural in the TanStack ecosystem, using:
 
 - **Zod schemas** for type-safe tool parameters
 - **API routes** for handling MCP requests
 - **Web standard Request/Response** APIs
+- **Full session management** with `Mcp-Session-Id` headers
+- **Origin validation** for DNS rebinding protection
+- **SSE resumability** via event IDs and `Last-Event-ID`
 
 ---
 
@@ -40,20 +43,27 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is a standa
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     AI Assistant / MCP Client               │
-│                  (Claude, ChatGPT, etc.)                    │
+│                  (Claude, ChatGPT, Cursor, etc.)            │
 └─────────────────────────┬───────────────────────────────────┘
-                          │ HTTP POST (JSON-RPC 2.0)
+                          │ HTTP (POST/GET/DELETE)
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              TanStack Start Application                     │
 │  ┌────────────────────────────────────────────────────────┐ │
 │  │  /api/mcp (API Route)                                  │ │
 │  │  src/routes/api/mcp.ts                                 │ │
+│  │                                                        │ │
+│  │  Methods:                                              │ │
+│  │  - POST: JSON-RPC requests                             │ │
+│  │  - GET: SSE stream for notifications                   │ │
+│  │  - DELETE: Session termination                         │ │
 │  └────────────────────────┬───────────────────────────────┘ │
 │                           │                                 │
 │  ┌────────────────────────▼───────────────────────────────┐ │
-│  │  MCP Server (mcp-start)                                │ │
-│  │  src/mcp/index.ts                                      │ │
+│  │  MCP Server (mcp-tanstack-start)                       │ │
+│  │  - Session management (Mcp-Session-Id)                 │ │
+│  │  - Origin validation (DNS rebinding protection)        │ │
+│  │  - SSE resumability (event IDs)                        │ │
 │  │                                                        │ │
 │  │  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐   │ │
 │  │  │ list_posts   │ │ get_post     │ │ search_posts │   │ │
@@ -104,7 +114,9 @@ export const Route = createFileRoute('/api/mcp')({
     handlers: {
       POST: async ({ request }) => {
         return new Response(...)
-      }
+      },
+      GET: async ({ request }) => { ... },
+      DELETE: async ({ request }) => { ... },
     }
   }
 })
@@ -120,8 +132,9 @@ export const Route = createFileRoute('/api/mcp')({
 
 MCP requires:
 - External HTTP access (AI clients connect over the network)
-- Control over headers (Content-Type, Accept)
+- Control over headers (Content-Type, Accept, Mcp-Session-Id)
 - JSON-RPC message format
+- SSE streaming support
 
 API routes provide all of this, making them the correct choice.
 
@@ -159,7 +172,7 @@ src/
 ### Step 1: Install Dependencies
 
 ```bash
-npm install mcp-start @modelcontextprotocol/sdk zod
+npm install mcp-tanstack-start @modelcontextprotocol/sdk zod
 ```
 
 Or link local development version:
@@ -177,7 +190,7 @@ Tools are the functions that AI assistants can call. Each tool needs:
 
 ```typescript
 // src/mcp/tools/blog.ts
-import { defineTool } from "mcp-start";
+import { defineTool } from "mcp-tanstack-start";
 import { z } from "zod";
 
 export const listPostsTool = defineTool({
@@ -201,7 +214,7 @@ The server registers all tools and handles the MCP protocol:
 
 ```typescript
 // src/mcp/index.ts
-import { createMcpServer } from "mcp-start";
+import { createMcpServer } from "mcp-tanstack-start";
 import { listPostsTool, getPostTool } from "./tools/blog";
 
 export const mcp = createMcpServer({
@@ -209,12 +222,17 @@ export const mcp = createMcpServer({
   version: "1.0.0",
   instructions: "This server provides access to blog posts...",
   tools: [listPostsTool, getPostTool],
+  // Optional transport configuration
+  transport: {
+    allowedOrigins: ['https://my-app.com'], // Production origins
+    sessionTimeout: 300000, // 5 minutes
+  },
 });
 ```
 
 ### Step 4: Create API Route
 
-Expose the MCP server via an HTTP endpoint:
+Expose the MCP server via an HTTP endpoint with all three required methods:
 
 ```typescript
 // src/routes/api/mcp.ts
@@ -224,7 +242,13 @@ import { mcp } from "../../mcp";
 export const Route = createFileRoute("/api/mcp")({
   server: {
     handlers: {
+      GET: async ({ request }) => {
+        return mcp.handleRequest(request);
+      },
       POST: async ({ request }) => {
+        return mcp.handleRequest(request);
+      },
+      DELETE: async ({ request }) => {
         return mcp.handleRequest(request);
       },
     },
@@ -232,7 +256,7 @@ export const Route = createFileRoute("/api/mcp")({
 });
 ```
 
-That's it! The endpoint is now available at `POST /api/mcp`.
+That's it! The endpoint is now available at `/api/mcp`.
 
 ---
 
@@ -260,9 +284,11 @@ That's it! The endpoint is now available at `POST /api/mcp`.
    }
    ```
 
-3. **MCP server routes to tool** based on `params.name`
+3. **MCP server validates** Origin header, session, and protocol version
 
-4. **Tool executes** with validated parameters
+4. **MCP server routes to tool** based on `params.name`
+
+5. **Tool executes** with validated parameters
    ```typescript
    execute: async ({ limit }) => {
      const posts = await getAllPosts();
@@ -270,7 +296,7 @@ That's it! The endpoint is now available at `POST /api/mcp`.
    }
    ```
 
-5. **Response returned** as JSON-RPC
+6. **Response returned** as JSON-RPC (via SSE or JSON)
    ```json
    {
      "jsonrpc": "2.0",
@@ -288,10 +314,27 @@ That's it! The endpoint is now available at `POST /api/mcp`.
 
 | Method | Description |
 |--------|-------------|
-| `initialize` | Client connects, exchanges capabilities |
+| `initialize` | Client connects, exchanges capabilities, receives session ID |
 | `tools/list` | Client requests available tools |
 | `tools/call` | Client invokes a specific tool |
 | `ping` | Health check |
+
+### HTTP Methods (2025-06-18 Spec)
+
+| Method | Purpose |
+|--------|---------|
+| `POST` | JSON-RPC requests (single message per request) |
+| `GET` | SSE stream for server-to-client notifications |
+| `DELETE` | Session termination |
+
+### Required Headers
+
+| Header | When | Purpose |
+|--------|------|---------|
+| `Accept` | All POST requests | Must include both `application/json` and `text/event-stream` |
+| `Content-Type` | POST requests | Must be `application/json` |
+| `Mcp-Session-Id` | After initialization | Session identifier |
+| `MCP-Protocol-Version` | Recommended | Protocol version (defaults to `2025-03-26` if missing) |
 
 ---
 
@@ -299,10 +342,30 @@ That's it! The endpoint is now available at `POST /api/mcp`.
 
 ### Using curl
 
-**List available tools:**
+**Initialize connection:**
 ```bash
 curl -X POST http://localhost:3000/api/mcp \
   -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "initialize",
+    "params": {
+      "protocolVersion": "2025-06-18",
+      "capabilities": {},
+      "clientInfo": { "name": "test-client", "version": "1.0.0" }
+    },
+    "id": 0
+  }'
+```
+
+**List available tools (with session ID from initialize response):**
+```bash
+curl -X POST http://localhost:3000/api/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Mcp-Session-Id: <session-id-from-init>" \
+  -H "MCP-Protocol-Version: 2025-06-18" \
   -d '{
     "jsonrpc": "2.0",
     "method": "tools/list",
@@ -314,6 +377,9 @@ curl -X POST http://localhost:3000/api/mcp \
 ```bash
 curl -X POST http://localhost:3000/api/mcp \
   -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Mcp-Session-Id: <session-id>" \
+  -H "MCP-Protocol-Version: 2025-06-18" \
   -d '{
     "jsonrpc": "2.0",
     "method": "tools/call",
@@ -325,20 +391,10 @@ curl -X POST http://localhost:3000/api/mcp \
   }'
 ```
 
-**Initialize connection:**
+**Terminate session:**
 ```bash
-curl -X POST http://localhost:3000/api/mcp \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "method": "initialize",
-    "params": {
-      "protocolVersion": "2025-03-26",
-      "capabilities": {},
-      "clientInfo": { "name": "test-client", "version": "1.0.0" }
-    },
-    "id": 0
-  }'
+curl -X DELETE http://localhost:3000/api/mcp \
+  -H "Mcp-Session-Id: <session-id>"
 ```
 
 ### Using MCP Inspector
@@ -359,7 +415,7 @@ npx @modelcontextprotocol/inspector http://localhost:3000/api/mcp
 
 ```typescript
 // src/mcp/tools/analytics.ts
-import { defineTool } from "mcp-start";
+import { defineTool } from "mcp-tanstack-start";
 import { z } from "zod";
 
 export const getPageViewsTool = defineTool({
@@ -396,7 +452,7 @@ export const mcp = createMcpServer({
 Tools can return more than text:
 
 ```typescript
-import { text, image } from "mcp-start";
+import { text, image } from "mcp-tanstack-start";
 
 execute: async ({ url }) => {
   const screenshot = await captureScreenshot(url);
@@ -430,12 +486,30 @@ execute: async ({ id }) => {
 
 ## Security Considerations
 
+### Origin Validation (Built-in)
+
+The 2025-06-18 spec requires Origin header validation to prevent DNS rebinding attacks. By default, mcp-tanstack-start only allows localhost origins. Configure for production:
+
+```typescript
+const mcp = createMcpServer({
+  // ...
+  transport: {
+    allowedOrigins: [
+      'https://my-app.com',
+      'https://api.my-app.com',
+    ],
+  },
+});
+```
+
+> ⚠️ **Warning**: Setting `allowedOrigins: ["*"]` disables Origin validation entirely. This is NOT recommended for production.
+
 ### Authentication
 
 For production, add authentication:
 
 ```typescript
-import { withMcpAuth } from "mcp-start";
+import { withMcpAuth } from "mcp-tanstack-start";
 
 const authenticatedHandler = withMcpAuth(
   async (request, auth) => mcp.handleRequest(request, { auth }),
@@ -449,7 +523,9 @@ const authenticatedHandler = withMcpAuth(
 export const Route = createFileRoute("/api/mcp")({
   server: {
     handlers: {
+      GET: authenticatedHandler,
       POST: authenticatedHandler,
+      DELETE: authenticatedHandler,
     },
   },
 });
@@ -472,11 +548,27 @@ Zod schemas automatically validate inputs, but be careful with:
 
 ### "Method not allowed"
 
-Ensure you're using POST, not GET:
+Ensure you're using the correct HTTP method:
+- `POST` for JSON-RPC requests
+- `GET` for SSE streams
+- `DELETE` for session termination
+
+### "Not Acceptable" (406)
+
+The Accept header must include BOTH types:
 ```bash
-curl -X POST ...  # ✓
-curl http://...   # ✗ (defaults to GET)
+curl -H "Accept: application/json, text/event-stream" ...
 ```
+
+### "Forbidden: Origin not allowed" (403)
+
+The request Origin doesn't match `allowedOrigins`. Either:
+- Add your origin to the allowed list
+- If testing locally, ensure you're using localhost
+
+### "Not Found: Session does not exist" (404)
+
+The session has expired or was terminated. Send a new `initialize` request.
 
 ### "Content-Type must be application/json"
 
@@ -500,6 +592,6 @@ npm run dev  # Restarts and regenerates
 
 ## Further Reading
 
-- [MCP Specification](https://modelcontextprotocol.io/specification/2025-03-26)
+- [MCP Specification (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18)
 - [TanStack Start Documentation](https://tanstack.com/start/latest)
-- [mcp-start Package](../mcp-start/README.md)
+- [mcp-tanstack-start Package](https://github.com/codyde/mcp-tanstack-start)
