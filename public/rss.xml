@@ -5,15 +5,15 @@
     <link>https://codyde.io</link>
     <description>Writing about developer experience, cloud infrastructure, and building with modern web technologies.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Nov 2025 18:55:38 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 30 Nov 2025 04:34:19 GMT</lastBuildDate>
     <atom:link href="https://codyde.io/rss.xml" rel="self" type="application/rss+xml"/>
     
     <item>
-      <title><![CDATA[Building MCP-Start: Bringing Model Context Protocol to TanStack Start]]></title>
+      <title><![CDATA[Building MCP TanStack Start: Bringing Model Context Protocol to TanStack Start]]></title>
       <link>https://codyde.io/posts/building-mcp-start-tanstack</link>
       <guid>https://codyde.io/posts/building-mcp-start-tanstack</guid>
       <pubDate>Sat, 29 Nov 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[I needed MCP servers in TanStack Start, and the existing solutions didn't quite fit. Here's how Claude Code helped me build mcp-start, and the wild ride of WebStandardTransport implementation.]]></description>
+      <description><![CDATA[I wanted MCP servers in TanStack Start, so I built one. Here's how Claude Code helped me build mcp-tanstack-start.]]></description>
     </item>
     <item>
       <title><![CDATA[Extending Sentry's JavaScript SDK to support Claude Code (using...Claude Code)]]></title>

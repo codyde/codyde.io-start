@@ -6,6 +6,7 @@ export interface BlogPost {
   date: string
   excerpt: string
   content: string
+  draft?: boolean
 }
 
 export interface BlogPostMetadata {
@@ -13,6 +14,7 @@ export interface BlogPostMetadata {
   title: string
   date: string
   excerpt: string
+  draft?: boolean
 }
 
 export function parseMarkdown(filename: string, content: string): BlogPost {
@@ -29,6 +31,7 @@ export function parseMarkdown(filename: string, content: string): BlogPost {
     date: data.date || new Date().toISOString(),
     excerpt,
     content: markdownContent,
+    draft: data.draft || false,
   }
 }
 

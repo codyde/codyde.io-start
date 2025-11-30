@@ -1,4 +1,4 @@
-import { defineTool } from "mcp-start";
+import { defineTool } from "mcp-tanstack-start";
 import { z } from "zod";
 
 /**

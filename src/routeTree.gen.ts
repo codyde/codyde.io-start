@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsSlugRouteImport } from './routes/posts/$slug'
+import { Route as ApiOgRouteImport } from './routes/api/og'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
+import { Route as ApiOgSlugRouteImport } from './routes/api/og.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,39 +25,62 @@ const PostsSlugRoute = PostsSlugRouteImport.update({
   path: '/posts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOgRoute = ApiOgRouteImport.update({
+  id: '/api/og',
+  path: '/api/og',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiMcpRoute = ApiMcpRouteImport.update({
   id: '/api/mcp',
   path: '/api/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOgSlugRoute = ApiOgSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ApiOgRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/mcp': typeof ApiMcpRoute
+  '/api/og': typeof ApiOgRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
+  '/api/og/$slug': typeof ApiOgSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/mcp': typeof ApiMcpRoute
+  '/api/og': typeof ApiOgRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
+  '/api/og/$slug': typeof ApiOgSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/mcp': typeof ApiMcpRoute
+  '/api/og': typeof ApiOgRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
+  '/api/og/$slug': typeof ApiOgSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/mcp' | '/posts/$slug'
+  fullPaths: '/' | '/api/mcp' | '/api/og' | '/posts/$slug' | '/api/og/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/mcp' | '/posts/$slug'
-  id: '__root__' | '/' | '/api/mcp' | '/posts/$slug'
+  to: '/' | '/api/mcp' | '/api/og' | '/posts/$slug' | '/api/og/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/mcp'
+    | '/api/og'
+    | '/posts/$slug'
+    | '/api/og/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiMcpRoute: typeof ApiMcpRoute
+  ApiOgRoute: typeof ApiOgRouteWithChildren
   PostsSlugRoute: typeof PostsSlugRoute
 }
 
@@ -75,6 +100,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/og': {
+      id: '/api/og'
+      path: '/api/og'
+      fullPath: '/api/og'
+      preLoaderRoute: typeof ApiOgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/mcp': {
       id: '/api/mcp'
       path: '/api/mcp'
@@ -82,12 +114,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiMcpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/og/$slug': {
+      id: '/api/og/$slug'
+      path: '/$slug'
+      fullPath: '/api/og/$slug'
+      preLoaderRoute: typeof ApiOgSlugRouteImport
+      parentRoute: typeof ApiOgRoute
+    }
   }
 }
+
+interface ApiOgRouteChildren {
+  ApiOgSlugRoute: typeof ApiOgSlugRoute
+}
+
+const ApiOgRouteChildren: ApiOgRouteChildren = {
+  ApiOgSlugRoute: ApiOgSlugRoute,
+}
+
+const ApiOgRouteWithChildren = ApiOgRoute._addFileChildren(ApiOgRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiMcpRoute: ApiMcpRoute,
+  ApiOgRoute: ApiOgRouteWithChildren,
   PostsSlugRoute: PostsSlugRoute,
 }
 export const routeTree = rootRouteImport

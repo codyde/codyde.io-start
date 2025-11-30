@@ -1,5 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { mcp } from "../../mcp";
+import { createMcpServer } from "mcp-tanstack-start";
+
+// Import tools
+import { listPostsTool, getPostTool, searchPostsTool } from "../../mcp/tools/blog";
+import { echoTool, serverInfoTool } from "../../mcp/tools/echo";
+
+/**
+ * MCP Server for codyde-start blog
+ *
+ * This server exposes tools that allow AI assistants to:
+ * - List and read blog posts
+ * - Search blog content
+ * - Test connectivity
+ */
+const mcp = createMcpServer({
+  name: "codyde-start",
+  version: "1.0.0",
+  instructions: `This is Cody's personal blog built with TanStack Start.
+You can use the available tools to explore blog posts, search for content,
+and retrieve full post details. Use list_posts to see available content,
+search_posts to find specific topics, and get_post to read full articles.`,
+  tools: [
+    // Blog tools
+    listPostsTool,
+    getPostTool,
+    searchPostsTool,
+    // Utility tools
+    echoTool,
+    serverInfoTool,
+  ],
+});
 
 /**
  * MCP API Route
@@ -15,10 +45,10 @@ import { mcp } from "../../mcp";
 export const Route = createFileRoute("/api/mcp")({
   server: {
     handlers: {
-      POST: async ({ request }) => {
+      GET: async ({ request }) => {
         return mcp.handleRequest(request);
       },
-      GET: async ({ request }) => {
+      POST: async ({ request }) => {
         return mcp.handleRequest(request);
       },
     },

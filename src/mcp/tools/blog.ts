@@ -1,4 +1,4 @@
-import { defineTool } from "mcp-start";
+import { defineTool } from "mcp-tanstack-start";
 import { z } from "zod";
 import { getAllPosts, getPostBySlug } from "../../lib/posts.server";
 
@@ -48,7 +48,7 @@ export const getPostTool = defineTool({
         content: [{ type: "text" as const, text: `Post not found: ${slug}` }],
         isError: true,
       };
-    }
+    } 
 
     return JSON.stringify(
       {

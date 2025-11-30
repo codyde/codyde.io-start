@@ -114,6 +114,11 @@ code {
   @apply mb-6 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900;
 }
 
+/* Single-line code blocks - more compact with inline copy button */
+.prose pre:has(> span.flex) {
+  @apply py-2 px-3;
+}
+
 .prose pre code {
   @apply bg-transparent p-0 text-sm;
 }
@@ -132,4 +137,30 @@ code {
 
 .hljs {
   @apply !bg-gray-900;
+}
+
+/* Typewriter animations */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-wave {
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
 }

@@ -12,7 +12,7 @@ const OUTPUT_PATH = path.join(__dirname, '../src/generated/posts.json')
 function generatePostsData() {
   const files = fs.readdirSync(POSTS_DIR).filter(file => file.endsWith('.md'))
 
-  const posts = files.map(file => {
+  const allPosts = files.map(file => {
     const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf-8')
     const { data, content: markdownContent } = matter(content)
     const slug = file.replace(/\.md$/, '')
@@ -38,11 +38,15 @@ function generatePostsData() {
       date: data.date || new Date().toISOString(),
       excerpt,
       content: markdownContent,
+      draft: data.draft || false,
     }
   })
 
+  // Count drafts for logging
+  const draftCount = allPosts.filter(post => post.draft).length
+
   // Sort by date descending
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   // Ensure output directory exists
   const outputDir = path.dirname(OUTPUT_PATH)
@@ -50,9 +54,9 @@ function generatePostsData() {
     fs.mkdirSync(outputDir, { recursive: true })
   }
 
-  // Write JSON file
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(posts, null, 2), 'utf-8')
-  console.log(`Generated posts data at ${OUTPUT_PATH} (${posts.length} posts)`)
+  // Write JSON file (include draft field for runtime filtering)
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(allPosts, null, 2), 'utf-8')
+  console.log(`Generated posts data at ${OUTPUT_PATH} (${allPosts.length} posts, ${draftCount} drafts)`)
 }
 
 generatePostsData()

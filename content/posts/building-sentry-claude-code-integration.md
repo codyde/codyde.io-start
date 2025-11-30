@@ -4,6 +4,7 @@ date: '2025-11-29'
 slug: building-sentry-claude-code-integration
 cover_image: https://placeholder-for-cover-image.com/sentry-claude-code.png
 description: Turns out AI is pretty good at researching existing patterns, and you can extend SDKs pretty reasonably with it. I took Claude Code on a spin to see if I could integrate the Claude Code Agent SDK... and it did pretty ok!
+draft: true
 ---
 
 I spend way too much time debugging AI agents.
